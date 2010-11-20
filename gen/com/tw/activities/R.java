@@ -15,13 +15,17 @@ public final class R {
     }
     public static final class id {
         public static final int find_quote=0x7f060002;
+        public static final int portfolio_add=0x7f060005;
+        public static final int portfolio_stock_symbol=0x7f060004;
         public static final int price=0x7f060003;
         public static final int scroll_detail_view=0x7f060000;
+        public static final int stock_list=0x7f060006;
         public static final int stock_symbol=0x7f060001;
     }
     public static final class layout {
         public static final int home_page=0x7f030000;
         public static final int main=0x7f030001;
+        public static final int portfolio=0x7f030002;
     }
     public static final class string {
         public static final int app_name=0x7f040000;

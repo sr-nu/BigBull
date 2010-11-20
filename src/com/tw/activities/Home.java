@@ -20,7 +20,6 @@ public class Home extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home_page);
         
-        
         Button getQuote = (Button)findViewById(R.id.find_quote);        
         getQuote.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
@@ -32,10 +31,13 @@ public class Home extends Activity {
     
      class UpdateQuoteTask extends AsyncTask<String, String, String> {
         protected void onProgressUpdate(Integer... progress) {
+        	TextView quote = (TextView)findViewById(R.id.price);
+            quote.setText(progress[0]);
         }
 
         protected void onPostExecute(String result) {
-        	updateQuote(result);
+        	TextView quote = (TextView)findViewById(R.id.price);
+            quote.setText(result); 
         }
 
 		@Override
@@ -44,11 +46,5 @@ public class Home extends Activity {
 		}
     }
         
-    
-    public void updateQuote(String quoteValue) {
-       TextView quote = (TextView)findViewById(R.id.price);
-       quote.setText(quoteValue);    	
-    }
-    
 }
 
