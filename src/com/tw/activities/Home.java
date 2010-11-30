@@ -42,7 +42,8 @@ public class Home extends Activity {
 
 		@Override
 		protected String doInBackground(String... params) {
-			return (new DataRetrieverService().getQuote(params[0]));
+			//return (new DataRetrieverService().getQuote(params[0]));
+			return (new DataRetrieverService().getSymbol(params[0]));
 		}
     }
         
