@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+    <TextView
+        android:paddingTop="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18dp"
+        android:text="@string/company_name" />
+
+    <!-- Note: android:inputType is not supported in Android 1.5 -->
+    <AutoCompleteTextView
+        android:layout_width="fill_parent"
+        android:inputType="textNoSuggestions"
+        android:layout_height="wrap_content"
+        android:completionThreshold="1"
+        android:id="@+id/company_name" />
+
+    <LinearLayout
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18dp"
+            android:paddingRight="6dp"
+            android:text="@string/nse_symbol" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18dp"
+            android:text="@string/none"
+            android:id="@+id/nse_symbol" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/confirm"
+        android:text="@string/confirm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>

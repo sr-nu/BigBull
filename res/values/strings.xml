@@ -2,4 +2,8 @@
 <resources>
     <string name="app_name">BigBull</string>
     <string name="price">Last traded stock price</string>
+    <string name="company_name">Company Name</string>
+    <string name="nse_symbol">NSE Symbol:</string>
+    <string name="confirm">Confirm</string>
+    <string name="none">N/A</string>
 </resources>
