@@ -6,4 +6,6 @@
     <string name="nse_symbol">NSE Symbol:</string>
     <string name="confirm">Confirm</string>
     <string name="none">N/A</string>
+    <string name="portfolio">Portfolio</string>
+    <string name="home">Home</string>
 </resources>
