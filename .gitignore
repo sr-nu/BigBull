@@ -1,0 +1,11 @@
+bin/com/tw/activities/*.class
+bin/com/tw/services/*.class
+bin/*.dex
+bin/*.apk.*
+bin/*.apk
+bin/com/tw/activities.R.java
+.idea/*
+*.iml
+*.ipr
+*.iws
+bin/*
