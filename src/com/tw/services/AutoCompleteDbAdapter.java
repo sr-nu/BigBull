@@ -12,11 +12,10 @@ import android.util.Log;
 /**
  * Simple database access helper class.
  * 
- * @author Dan Breslau
  */
 public class AutoCompleteDbAdapter {
     /**
-     * List of states and capitals.
+     * List of company names and symbols.
      */
     private static final String[][] symbol_data = {
             { "INFOSYS Technologies", "INFY.NSE", "INFOSYS.BSE" },
@@ -28,32 +27,7 @@ public class AutoCompleteDbAdapter {
     private static final String TABLE_NAME = "symbol_map";
     private static final int DATABASE_VERSION = 1;
 
-    private class DatabaseHelper extends SQLiteOpenHelper {
-
-        DatabaseHelper(Context context) {
-            super(context, DATABASE_NAME, null, DATABASE_VERSION);
-        }
-
-        @Override
-        public void onCreate(SQLiteDatabase db) {
-            final String DATABASE_CREATE_STATES =
-                    "create table " + TABLE_NAME
-                            + "(_id integer primary key autoincrement"
-                            + ", company text not null"
-                            + ", nse text"
-                            + ", bse text)";
-
-            db.execSQL(DATABASE_CREATE_STATES);
-            populateWithData(db);
-        }
-
-        @Override
-        public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-            db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
-            onCreate(db);
-        }
-    }
-
+    
     private DatabaseHelper mDbHelper;
     private SQLiteDatabase mDb;
     private final Activity mActivity;
@@ -67,7 +41,7 @@ public class AutoCompleteDbAdapter {
      */
     public AutoCompleteDbAdapter(Activity activity) {
         this.mActivity = activity;
-        mDbHelper = this.new DatabaseHelper(activity);
+        mDbHelper = new DatabaseHelper(activity);
         mDb = mDbHelper.getWritableDatabase();
     }
 
