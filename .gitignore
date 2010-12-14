@@ -9,3 +9,4 @@ bin/com/tw/activities.R.java
 *.ipr
 *.iws
 bin/*
+test/bin/**/**
