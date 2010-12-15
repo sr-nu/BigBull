@@ -4,8 +4,10 @@ import android.app.Activity;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.View.OnKeyListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -19,6 +21,19 @@ public class Home extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home_page);
+        
+        
+        EditText textBox = (EditText)findViewById(R.id.stock_symbol);
+        
+        textBox.setOnKeyListener(new OnKeyListener() {
+			
+			@Override
+			public boolean onKey(View v, int keyCode, KeyEvent event) {
+				new UpdateQuoteTask().execute(((EditText)findViewById(R.id.stock_symbol)).getText().toString());
+				return false;
+			}
+		});
+        
         
         Button getQuote = (Button)findViewById(R.id.find_quote);        
         getQuote.setOnClickListener(new OnClickListener() {

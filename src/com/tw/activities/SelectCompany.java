@@ -15,14 +15,6 @@ import android.widget.SimpleCursorAdapter.CursorToStringConverter;
 
 import com.tw.services.AutoCompleteDbAdapter;
 
-/**
- * A simple Android Activity to demonstrate:
- * 
- * 1) How to use an AutoCompleteTextView with a SimpleCursorAdapter
- * 
- * 2) How to access the cursor row for the user's choice, to obtain additional
- * data from that row when an item is selected.
- */
 public class SelectCompany extends Activity {
 
     final static int[] to = new int[] { android.R.id.text1 };
