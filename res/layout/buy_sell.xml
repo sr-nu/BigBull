@@ -1,12 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView android:id="@+id/buysell_scroll_detail_view"
-	xmlns:android="http://schemas.android.com/apk/res/android"
-	android:layout_width="fill_parent" android:layout_height="fill_parent">
-	<LinearLayout android:layout_width="fill_parent"
-		android:layout_height="fill_parent" android:orientation="vertical">
-	
-		<Button android:text="SELL" android:id="@+id/submit_buysell"
+<RelativeLayout android:id="@+id/widget33"
+	android:layout_width="fill_parent" android:layout_height="fill_parent"
+	xmlns:android="http://schemas.android.com/apk/res/android">
+	<TextView android:id="@+id/widget43" android:layout_width="wrap_content"
+		android:layout_height="wrap_content" android:text="TextView"
+		android:layout_below="@+id/widget41" android:layout_alignLeft="@+id/widget38">
+	</TextView>
+	<TextView android:id="@+id/widget38" android:layout_width="wrap_content"
+		android:layout_height="31px" android:text="TextView"
+		android:layout_alignBaseline="@+id/widget40" android:layout_alignLeft="@+id/widget39">
+	</TextView>
+	<TextView android:id="@+id/widget39" android:layout_width="wrap_content"
+		android:layout_height="34px" android:text="TextView"
+		android:layout_alignBaseline="@+id/widget41" android:layout_toLeftOf="@+id/widget42">
+	</TextView>
+	<Button android:id="@+id/widget44" android:layout_width="132px"
+		android:layout_height="wrap_content" android:text="Button"
+		android:layout_alignParentBottom="true" android:layout_alignLeft="@+id/limit_radio">
+	</Button>
+	<TextView android:id="@+id/widget42" android:layout_width="82px"
+		android:layout_height="33px" android:text="TextView"
+		android:layout_below="@+id/widget41" android:layout_alignLeft="@+id/widget40">
+	</TextView>
+	<EditText android:id="@+id/widget40" android:layout_width="wrap_content"
+		android:layout_height="wrap_content" android:text="EditText"
+		android:textSize="18sp" android:layout_above="@+id/widget41"
+		android:layout_alignLeft="@+id/widget41">
+	</EditText>
+	<EditText android:id="@+id/widget41" android:layout_width="wrap_content"
+		android:layout_height="wrap_content" android:text="EditText"
+		android:textSize="18sp" android:layout_centerVertical="true"
+		android:layout_alignLeft="@+id/widget34">
+	</EditText>
+	<RadioButton android:id="@+id/alert_radio"
+		android:layout_width="wrap_content" android:layout_height="wrap_content"
+		android:text="Alert" android:layout_alignTop="@+id/limit_radio"
+		android:layout_toRightOf="@+id/limit_radio">
+	</RadioButton>
+	<RadioButton android:id="@+id/limit_radio"
+		android:layout_width="wrap_content" android:layout_height="wrap_content"
+		android:text="Limit" android:layout_alignTop="@+id/market_radio"
+		android:layout_toRightOf="@+id/market_radio">
+	</RadioButton>
+	<RadioButton android:id="@+id/market_radio"
+		android:layout_width="wrap_content" android:layout_height="wrap_content"
+		android:text="Market" android:layout_below="@+id/widget34"
+		android:layout_alignParentLeft="true">
+	</RadioButton>
+	<TextView android:id="@+id/widget34" android:layout_width="wrap_content"
+		android:layout_height="wrap_content" android:text="TextView"
+		android:layout_alignParentTop="true" android:layout_centerHorizontal="true">
+	</TextView>
+			<Button android:text="SUBMIT" android:id="@+id/submit_buysell"
 			android:layout_width="wrap_content" android:layout_height="wrap_content" />
-	</LinearLayout>
-
-</ScrollView>
+	
+</RelativeLayout>
