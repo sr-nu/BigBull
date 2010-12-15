@@ -59,10 +59,16 @@
 	</LinearLayout>
 	<LinearLayout android:layout_width="fill_parent"
 		android:layout_height="fill_parent" android:orientation="vertical">
-		<EditText android:id="@+id/stock_symbol" android:hint="TYPE THE SYMBOL"
-			android:layout_height="50dip" android:layout_width="fill_parent"
-			android:layout_marginLeft="3dip" android:layout_marginRight="3dip" />
-
+		<AutoCompleteTextView android:id="@+id/stock_symbol"
+			android:hint="TYPE THE SYMBOL" android:layout_height="50dip"
+			android:layout_width="fill_parent" android:layout_marginLeft="3dip"
+			android:layout_marginRight="3dip" android:completionThreshold="2" />
+		<!--
+			<EditText android:id="@+id/stock_symbol" android:hint="TYPE THE
+			SYMBOL" android:layout_height="50dip"
+			android:layout_width="fill_parent" android:layout_marginLeft="3dip"
+			android:layout_marginRight="3dip" />
+		-->
 		<Button android:id="@+id/find_quote" android:layout_width="fill_parent"
 			android:layout_marginLeft="80dip" android:layout_marginRight="80dip"
 			android:layout_marginTop="10dip" android:layout_height="wrap_content"

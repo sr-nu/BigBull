@@ -1,6 +1,8 @@
 package com.tw.services;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -15,6 +17,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.json.JSONTokener;
+
+import android.util.Log;
 
 public class DataRetrieverService {
 	
@@ -32,6 +36,7 @@ public class DataRetrieverService {
 			JSONTokener jsonTokener = new JSONTokener(response.substring(response.indexOf("(")+1,response.lastIndexOf(")")));
 			try {
 				JSONArray nextValue = ((JSONObject) ((JSONObject) jsonTokener.nextValue()).get("ResultSet")).getJSONArray("Result");
+				Log.d("DRS", nextValue.toString());
 				//TODO Send only BSE and NSE symbols
 
 				return nextValue.toString();
@@ -44,23 +49,25 @@ public class DataRetrieverService {
 
 	public String[] getCompanyNames(String companyName) {
 		
+		List<String> companyList = new ArrayList<String>();
+		
 		String response = sendHttpRequest("http://d.yimg.com/autoc.finance.yahoo.com/autoc?query="+companyName+"&callback=YAHOO.Finance.SymbolSuggest.ssCallback");
-		if(response != null && (!response.trim().equals("")) &&response.contains("\"Result\":")) {
-			JSONTokener jsonTokener = new JSONTokener(response.substring(response.indexOf("(")+1,response.lastIndexOf(")")));
+		if(response != null && (!response.trim().equals("")) && response.contains("\"Result\":")) {
+			String jsonString = response.substring(response.indexOf("["),response.lastIndexOf("]")+1);
+			Log.d("jsonString",jsonString.toString());
 			try {
-				JSONArray nextValue = ((JSONObject) ((JSONObject) jsonTokener.nextValue()).get("ResultSet")).getJSONArray("Result");
-				
-				
-				for(int i=0; i<nextValue.length(); i++) {
-					companyNameSymbolMap.put(((JSONObject)nextValue.get(i)).getString("company"),"symbol");
+				JSONArray jsonArray = new JSONArray(jsonString);
+				Log.d("array",jsonArray.toString());
+				for(int i=0; i<jsonArray.length(); i++) {
+					companyList.add(jsonArray.getJSONObject(i).getString("name"));
+					Log.d("index_"+i,jsonArray.getJSONObject(i).getString("name"));
+					//companyNameSymbolMap.put(((JSONObject)jsonArray.get(i)).getString("company"),"symbol");
 				}
-				
-				return companyNameSymbolMap.keySet().toArray(new String[0]);
 			} catch (JSONException e) {
 				e.printStackTrace();
 			}
 		}
-		return new String[]{};
+		return companyList.toArray(new String[0]);
 	}
 	
 	
