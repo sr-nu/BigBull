@@ -3,10 +3,9 @@ package com.tw.activities;
 import java.util.ArrayList;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -15,7 +14,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.AdapterView.OnItemClickListener;
 
@@ -29,7 +27,6 @@ public class Home extends Activity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-
 		setContentView(R.layout.home_page);
 
 		AutoCompleteTextView textBox = (AutoCompleteTextView) findViewById(R.id.stock_symbol);
@@ -76,9 +73,22 @@ public class Home extends Activity {
 		Button getQuote = (Button) findViewById(R.id.find_quote);
 		getQuote.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
-				new UpdateCompanyNamesTask().execute(((EditText) findViewById(R.id.stock_symbol)).getText().toString());
+				new GetQuoteTask().execute(((TextView)v).getText().toString().substring(((TextView)v).getText().toString().lastIndexOf('#')+1));
 			}
 		});
+		
+		
+		Button buy = (Button)findViewById(R.id.buy_home);
+        buy.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                Intent myIntent = new Intent(view.getContext(), BuySellStockActivity.class);
+                startActivityForResult(myIntent, 0);
+            }
+
+        });
+		
+		
+		
 	}
 
 	class GetQuoteTask extends AsyncTask<String, String, String>{
