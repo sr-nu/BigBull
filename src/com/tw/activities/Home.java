@@ -1,6 +1,7 @@
 package com.tw.activities;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import android.app.Activity;
@@ -16,21 +17,26 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.tw.activities.AutoFillCompany.UpdateCompanyTask;
 import com.tw.services.DataRetrieverService;
 
 public class Home extends Activity {
 	private ArrayAdapter<String> adapter;
-	List<String> companies = new ArrayList<String>();
+	private final List<String> companies = new ArrayList<String>();
 	
 	/** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        
+        companies.add("infosys");
+        
+        
+        
         setContentView(R.layout.home_page);
         
         AutoCompleteTextView textBox = (AutoCompleteTextView) findViewById(R.id.stock_symbol);
         adapter = new ArrayAdapter<String>(this, R.layout.list_item, companies);
+        adapter.setNotifyOnChange(false);
         textBox.setAdapter(adapter);
         
         
@@ -38,7 +44,6 @@ public class Home extends Activity {
         /*
         EditText textBox = (EditText)findViewById(R.id.stock_symbol);
          */
-        
         
         textBox.addTextChangedListener(new TextWatcher() {
 
@@ -58,13 +63,11 @@ public class Home extends Activity {
         	
         });
         
-       /* Replacing with textchange listener
-        * 
-        * textBox.setOnKeyListener(new OnKeyListener() {
+/*       textBox.setOnKeyListener(new OnKeyListener() {
 			
 			@Override
 			public boolean onKey(View v, int keyCode, KeyEvent event) {
-				new UpdateQuoteTask().execute(((EditText)findViewById(R.id.stock_symbol)).getText().toString());
+				new UpdateQuoteTask().execute(((TextView)v).getText().toString());
 				return false;
 			}
 		});*/
@@ -87,8 +90,12 @@ public class Home extends Activity {
 
         protected void onPostExecute(String[] result) {
         	TextView quote = (TextView)findViewById(R.id.price);
-        	if(result!=null && result.length > 0)
+        	if(result!=null && result.length > 0) {
+        	    companies.clear();
+        	    companies.addAll(Arrays.asList(result));
         		quote.setText(result[0]);
+        		adapter.notifyDataSetChanged();
+        	}
         	else
         		quote.setText("NA");
         }
