@@ -10,3 +10,4 @@ bin/com/tw/activities.R.java
 *.iws
 bin/*
 test/bin/**/**
+out/*

@@ -12,6 +12,8 @@ import android.widget.TextView;
 import com.tw.activities.R;
 import com.tw.services.DataRetrieverService;
 
+import java.io.IOException;
+
 public class Home extends Activity {
 	
 	/** Called when the activity is first created. */
@@ -43,8 +45,13 @@ public class Home extends Activity {
 		@Override
 		protected String doInBackground(String... params) {
 			//return (new DataRetrieverService().getQuote(params[0]));
-			return (new DataRetrieverService().getSymbol(params[0]));
-		}
+            try {
+                return (new DataRetrieverService().getSymbol(params[0]));
+            } catch (IOException e) {
+                e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+            }
+            return "N/A";
+        }
     }
         
 }

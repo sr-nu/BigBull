@@ -4,6 +4,9 @@ import java.io.IOException;
 import java.util.Map;
 import java.util.TreeMap;
 
+import com.sun.jndi.toolkit.url.UrlUtil;
+import com.tw.utils.NetworkUtils;
+import com.tw.utils.URLUtils;
 import org.apache.http.HttpRequest;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
@@ -19,15 +22,15 @@ import org.json.JSONTokener;
 public class DataRetrieverService {
 	
 	Map<String,String> companyNameSymbolMap = new TreeMap<String,String>();
+    NetworkUtils networkUtils = new NetworkUtils();
 	
-	
-	public String getQuote(String symbol) {
+	public String getQuote(String symbol) throws IOException {
 		//example : "http://finance.yahoo.com/d/quote.csv?s=SATYAMCOM.NS&f=sl1d1t1c1ohgv
-        return sendHttpRequest("http://finance.yahoo.com/d/quote.csv?s="+symbol+"&f=sl1d1t1c1ohgv");
+        return networkUtils.sendHttpRequest(URLUtils.getGetQuoteURL(symbol));
     }
 	
-	public String getSymbol(String companyName) {
-		String response = sendHttpRequest("http://d.yimg.com/autoc.finance.yahoo.com/autoc?query="+companyName+"&callback=YAHOO.Finance.SymbolSuggest.ssCallback");
+	public String getSymbol(String companyName) throws IOException {
+        String response = networkUtils.sendHttpRequest(URLUtils.getCompanyUrl(companyName));
 		if(response != null && (!response.trim().equals("")) &&response.contains("\"Result\":")) {
 			JSONTokener jsonTokener = new JSONTokener(response.substring(response.indexOf("(")+1,response.lastIndexOf(")")));
 			try {
@@ -42,9 +45,8 @@ public class DataRetrieverService {
 		return "N/A";
 	}
 
-	public String[] getCompanyNames(String companyName) {
-		
-		String response = sendHttpRequest("http://d.yimg.com/autoc.finance.yahoo.com/autoc?query="+companyName+"&callback=YAHOO.Finance.SymbolSuggest.ssCallback");
+	public String[] getCompanyNames(String companyName) throws IOException {
+        String response = networkUtils.sendHttpRequest(URLUtils.getCompanyUrl(companyName));
 		if(response != null && (!response.trim().equals("")) &&response.contains("\"Result\":")) {
 			JSONTokener jsonTokener = new JSONTokener(response.substring(response.indexOf("(")+1,response.lastIndexOf(")")));
 			try {
@@ -61,20 +63,5 @@ public class DataRetrieverService {
 			}
 		}
 		return new String[]{};
-	}
-	
-	
-	private String sendHttpRequest(String URL) {
-		HttpRequest request = new HttpGet(URL);
-        HttpClient client = new DefaultHttpClient();  
-		try {
-			 HttpResponse response = client.execute((HttpUriRequest) request);
-             String value = EntityUtils.toString(response.getEntity());
-			 client.getConnectionManager().shutdown();
-			return value;
-		} catch (IOException e) {
-			e.printStackTrace();
-		} 
-		return "NA";
 	}
 }

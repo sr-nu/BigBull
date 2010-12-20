@@ -19,7 +19,7 @@ public class UpdateProfile extends Activity {
             public void onClick(View view) {
                 UpdateProfileService updateProfileService = new UpdateProfileService();
                 try {
-                    updateProfileService.updateProfile(new NetworkUtils(), "ausmarton", 100000);
+                    updateProfileService.updateProfile(new NetworkUtils(), "ausmarton", new Integer(100000));
                 } catch (IOException e) {
                     e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
                 }
