@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:id="@+id/scroll_detail_view"
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent" android:layout_height="fill_parent">
+	<LinearLayout android:layout_width="fill_parent"
+		android:layout_height="fill_parent" android:orientation="vertical">
+		<AutoCompleteTextView android:id="@+id/stock_symbol"
+			android:hint="TYPE THE SYMBOL" android:layout_height="50dip"
+			android:layout_width="fill_parent" android:layout_marginLeft="3dip"
+			android:layout_marginRight="3dip" android:completionThreshold="2" />
+		<!--
+			<EditText android:id="@+id/stock_symbol" android:hint="TYPE THE
+			SYMBOL" android:layout_height="50dip"
+			android:layout_width="fill_parent" android:layout_marginLeft="3dip"
+			android:layout_marginRight="3dip" />
+		-->
+		<Button android:id="@+id/find_quote" android:layout_width="fill_parent"
+			android:layout_marginLeft="80dip" android:layout_marginRight="80dip"
+			android:layout_marginTop="10dip" android:layout_height="wrap_content"
+			android:text="Get Quote" />
+		<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+			android:id="@+id/price" android:text="@string/price" style="@style/textStyle" />
+		<Button android:layout_width="50dip"
+			android:layout_height="wrap_content" android:id="@+id/buy_home"
+			android:text="BUY" />
+		<Button android:text="SELL" android:id="@+id/sell_home"
+			android:layout_width="50dip" android:layout_height="wrap_content" />
+	</LinearLayout>
+
+</ScrollView>

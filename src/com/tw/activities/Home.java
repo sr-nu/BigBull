@@ -27,7 +27,7 @@ public class Home extends Activity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.home_page);
+		setContentView(R.layout.home);
 
 		AutoCompleteTextView textBox = (AutoCompleteTextView) findViewById(R.id.stock_symbol);
 		adapter = new ArrayAdapter<String>(this, R.layout.list_item, companies);
@@ -36,7 +36,6 @@ public class Home extends Activity {
 
 		//attach listener to fetch company names as the user types
 		textBox.setOnKeyListener(new OnKeyListener() {
-			@Override
 			public boolean onKey(View v, int keyCode, KeyEvent event) {
 				//TODO the service is getting called on every key press how to optimise this new
 				new UpdateCompanyNamesTask().execute(((TextView) v).getText().toString());
@@ -60,8 +59,6 @@ public class Home extends Activity {
 		 */
 
 		textBox.setOnItemClickListener(new OnItemClickListener() {
-
-			@Override
 			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
                 String companySelected = ((TextView)arg1).getText().toString();
 				new GetQuoteTask().execute(companySelected.substring(companySelected.lastIndexOf('#')+1));
