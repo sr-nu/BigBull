@@ -1,57 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@+id/widget33"
-	android:layout_width="fill_parent" android:layout_height="fill_parent"
-	xmlns:android="http://schemas.android.com/apk/res/android">
-	<TextView android:id="@+id/widget43" android:layout_width="wrap_content"
-		android:layout_height="wrap_content" android:text="TextView"
-		android:layout_below="@+id/widget41" android:layout_alignLeft="@+id/widget38">
-	</TextView>
-	<TextView android:id="@+id/widget38" android:layout_width="wrap_content"
-		android:layout_height="31px" android:text="TextView"
-		android:layout_alignBaseline="@+id/widget40" android:layout_alignLeft="@+id/widget39">
-	</TextView>
-	<TextView android:id="@+id/widget39" android:layout_width="wrap_content"
-		android:layout_height="34px" android:text="TextView"
-		android:layout_alignBaseline="@+id/widget41" android:layout_toLeftOf="@+id/widget42">
-	</TextView>
-	<Button android:id="@+id/widget44" android:layout_width="132px"
-		android:layout_height="wrap_content" android:text="Button"
-		android:layout_alignParentBottom="true" android:layout_alignLeft="@+id/limit_radio">
-	</Button>
-	<TextView android:id="@+id/widget42" android:layout_width="82px"
-		android:layout_height="33px" android:text="TextView"
-		android:layout_below="@+id/widget41" android:layout_alignLeft="@+id/widget40">
-	</TextView>
-	<EditText android:id="@+id/widget40" android:layout_width="wrap_content"
-		android:layout_height="wrap_content" android:text="EditText"
-		android:textSize="18sp" android:layout_above="@+id/widget41"
-		android:layout_alignLeft="@+id/widget41">
-	</EditText>
-	<EditText android:id="@+id/widget41" android:layout_width="wrap_content"
-		android:layout_height="wrap_content" android:text="EditText"
-		android:textSize="18sp" android:layout_centerVertical="true"
-		android:layout_alignLeft="@+id/widget34">
-	</EditText>
-	<RadioButton android:id="@+id/alert_radio"
-		android:layout_width="wrap_content" android:layout_height="wrap_content"
-		android:text="Alert" android:layout_alignTop="@+id/limit_radio"
-		android:layout_toRightOf="@+id/limit_radio">
-	</RadioButton>
-	<RadioButton android:id="@+id/limit_radio"
-		android:layout_width="wrap_content" android:layout_height="wrap_content"
-		android:text="Limit" android:layout_alignTop="@+id/market_radio"
-		android:layout_toRightOf="@+id/market_radio">
-	</RadioButton>
-	<RadioButton android:id="@+id/market_radio"
-		android:layout_width="wrap_content" android:layout_height="wrap_content"
-		android:text="Market" android:layout_below="@+id/widget34"
-		android:layout_alignParentLeft="true">
-	</RadioButton>
-	<TextView android:id="@+id/widget34" android:layout_width="wrap_content"
-		android:layout_height="wrap_content" android:text="TextView"
-		android:layout_alignParentTop="true" android:layout_centerHorizontal="true">
-	</TextView>
-			<Button android:text="SUBMIT" android:id="@+id/submit_buysell"
-			android:layout_width="wrap_content" android:layout_height="wrap_content" />
-	
-</RelativeLayout>
+<ScrollView android:id="@+id/scroll_detail_view"
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent" android:layout_height="fill_parent">
+	<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+		android:layout_width="fill_parent" android:layout_height="fill_parent">
+
+		<TextView android:text="Deep Corp" android:id="@+id/CompanyName"
+			android:layout_width="fill_parent" android:layout_height="wrap_content" />
+
+		<TextView android:text="Quantity:" android:id="@+id/QuantityLbl"
+			android:layout_width="150dp" android:layout_height="30dp"
+			android:layout_below="@id/CompanyName" />
+		<TextView android:text="10" android:id="@+id/QuantityVal"
+			android:layout_width="50dp" android:layout_height="30dp"
+			android:layout_below="@id/CompanyName" android:layout_toRightOf="@id/QuantityLbl" />
+		<TextView android:text="Avg.Price:" android:id="@+id/AvgPriceLbl"
+			android:layout_width="150dp" android:layout_height="30dp"
+			android:layout_below="@id/CompanyName" android:layout_toRightOf="@id/QuantityVal" />
+		<TextView android:text="50" android:id="@+id/AvgPriceVal"
+			android:layout_width="50dp" android:layout_height="30dp"
+			android:layout_below="@id/CompanyName" android:layout_toRightOf="@id/AvgPriceLbl" />
+
+
+
+
+		<RadioGroup android:layout_width="fill_parent" android:id="@+id/BuyOptGroup"
+			android:layout_height="wrap_content" android:orientation="horizontal"
+			android:layout_below="@id/AvgPriceLbl">
+			<RadioButton android:text="Market" android:id="@+id/MarketOpt"
+				android:layout_width="150dp" android:layout_height="30dp" />
+			<RadioButton android:text="Limit" android:id="@+id/LimitOpt"
+				android:layout_width="150dp" android:layout_height="30dp" />
+			<RadioButton android:text="Alert" android:id="@+id/AlertOpt"
+				android:layout_width="150dp" android:layout_height="30dp" />
+		</RadioGroup>
+
+		<TextView android:text="Quantity" android:id="@+id/BuyQuantityLbl"
+			android:layout_width="150dp" android:layout_height="30dp" 
+			android:layout_below="@id/BuyOptGroup" />
+		<EditText android:text="" android:id="@+id/QuantityTxt"  android:layout_marginBottom="5dp"
+			android:layout_width="200dp" android:layout_height="30dp" 
+			android:layout_below="@id/BuyOptGroup" android:layout_toRightOf="@id/BuyQuantityLbl"/>
+			
+
+		<TextView android:text="Rate" android:id="@+id/RateLbl"
+			android:layout_width="150dp" android:layout_height="30dp"
+			android:layout_below="@id/BuyQuantityLbl" />
+		<EditText android:text="" android:id="@+id/RateTxt"
+			android:layout_width="200dp" android:layout_height="30dp"  android:layout_marginBottom="5dp" 
+			android:layout_below="@+id/BuyQuantityLbl" android:layout_toRightOf="@id/BuyQuantityLbl"/>
+			
+
+		<TextView android:text="Total" android:id="@+id/TotalLbl" 
+			android:layout_width="150dp" android:layout_height="30dp" 
+			android:layout_below="@id/RateLbl" />
+		<EditText android:text="" android:id="@+id/TotalTxt"  android:layout_marginBottom="5dp"
+			android:layout_width="200dp" android:layout_height="30dp" 
+			android:layout_below="@id/RateLbl" android:layout_toRightOf="@id/BuyQuantityLbl"/>
+			
+	</RelativeLayout>
+</ScrollView>
