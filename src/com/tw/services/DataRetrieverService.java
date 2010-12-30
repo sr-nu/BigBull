@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.util.Map;
 import java.util.TreeMap;
 
-import com.sun.jndi.toolkit.url.UrlUtil;
 import com.tw.utils.NetworkUtils;
 import com.tw.utils.URLUtils;
 import org.apache.http.HttpRequest;
