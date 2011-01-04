@@ -49,9 +49,7 @@ public class Home extends Activity {
 				new GetQuoteTask().execute(companySelected.substring(companySelected.lastIndexOf('#')+1));
 			}
 		});
-		
-		
-		
+
 /*		Button getQuote = (Button) findViewById(R.id.find_quote);
 		getQuote.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
@@ -59,8 +57,6 @@ public class Home extends Activity {
 			}
 		});
 		*/
-		
-		
 		
 		Button buy = (Button)findViewById(R.id.buy_home);
         buy.setOnClickListener(new View.OnClickListener() {
@@ -72,9 +68,6 @@ public class Home extends Activity {
                 startActivityForResult(myIntent, 0);
             }
         });
-		
-		
-		
 	}
 
 	class GetQuoteTask extends AsyncTask<String, String, String>{
@@ -90,7 +83,6 @@ public class Home extends Activity {
 		protected String doInBackground(String... params) {
 			return (new DataRetrieverService().getQuote(params[0]));
 		}
-		
 	}
 	
 	
@@ -99,7 +91,6 @@ public class Home extends Activity {
 		}
 
 		protected void onPostExecute(String[] result) {
-			
 			if (result != null && result.length > 0) {
 				adapter.setNotifyOnChange(false);
 				adapter.clear();
