@@ -37,7 +37,7 @@ public class Home extends Activity {
 		//attach listener to fetch company names as the user types
 		textBox.setOnKeyListener(new OnKeyListener() {
 			public boolean onKey(View v, int keyCode, KeyEvent event) {
-				//TODO the service is getting called on every key press how to optimise this new
+				//TODO the service is getting called on every key press how to optimize this 
 				new UpdateCompanyNamesTask().execute(((TextView) v).getText().toString());
 				return false;
 			}
@@ -52,21 +52,25 @@ public class Home extends Activity {
 		
 		
 		
-		Button getQuote = (Button) findViewById(R.id.find_quote);
+/*		Button getQuote = (Button) findViewById(R.id.find_quote);
 		getQuote.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
 				new GetQuoteTask().execute(((TextView)v).getText().toString().substring(((TextView)v).getText().toString().lastIndexOf('#')+1));
 			}
 		});
+		*/
+		
 		
 		
 		Button buy = (Button)findViewById(R.id.buy_home);
         buy.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 Intent myIntent = new Intent(view.getContext(), BuySellStockActivity.class);
+                myIntent.putExtra("com.tw.activities.CompanyName", "My Company");
+                myIntent.putExtra("com.tw.activities.CompanySymbol", "CMPNY");
+                myIntent.putExtra("com.tw.activities.Rate", "10.5");
                 startActivityForResult(myIntent, 0);
             }
-
         });
 		
 		
@@ -88,8 +92,6 @@ public class Home extends Activity {
 		}
 		
 	}
-	
-	
 	
 	
 	class UpdateCompanyNamesTask extends AsyncTask<String, String[], String[]> {

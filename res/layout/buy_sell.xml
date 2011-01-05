@@ -49,14 +49,19 @@
 		<EditText android:text="" android:id="@+id/RateTxt"
 			android:layout_width="200dp" android:layout_height="30dp"  android:layout_marginBottom="5dp" 
 			android:layout_below="@+id/BuyQuantityLbl" android:layout_toRightOf="@id/BuyQuantityLbl"/>
-			
 
-		<TextView android:text="Total" android:id="@+id/TotalLbl" 
-			android:layout_width="150dp" android:layout_height="30dp" 
+
+		<TextView android:text="Total" android:id="@+id/TotalLbl"
+			android:layout_width="150dp" android:layout_height="30dp"
 			android:layout_below="@id/RateLbl" />
-		<EditText android:text="" android:id="@+id/TotalTxt"  android:layout_marginBottom="5dp"
-			android:layout_width="200dp" android:layout_height="30dp" 
-			android:layout_below="@id/RateLbl" android:layout_toRightOf="@id/BuyQuantityLbl"/>
-			
-	</RelativeLayout>
+		<EditText android:text="" android:id="@+id/TotalTxt"
+			android:layout_marginBottom="5dp" android:layout_width="200dp"
+			android:layout_height="30dp" android:layout_below="@id/RateLbl"
+			android:layout_toRightOf="@id/BuyQuantityLbl" />
+	
+		<Button android:layout_width="150dp" android:id="@+id/BuyBtn"
+			android:layout_below="@id/TotalTxt" android:layout_marginLeft="150dp"
+			android:layout_height="50dp"
+			android:text="Buy"/>
+</RelativeLayout>
 </ScrollView>
