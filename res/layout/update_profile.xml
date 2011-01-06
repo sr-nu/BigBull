@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="horizontal"
+                  android:layout_width="fill_parent"
+                  android:layout_height="wrap_content"
+                  android:padding="5dp">
+    <Button android:id="@+id/update_profile" android:layout_width="fill_parent"
+                android:layout_marginLeft="80dip" android:layout_marginRight="80dip"
+                android:layout_marginTop="10dip" android:layout_height="wrap_content"
+                android:text="Update Profile" />
+</LinearLayout>
