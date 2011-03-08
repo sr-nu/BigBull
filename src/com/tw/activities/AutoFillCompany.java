@@ -51,7 +51,7 @@ public class AutoFillCompany extends Activity{
         }
 
         protected void onPostExecute(String[] result) {
-        	
+        	companies.clear();
         	companies.addAll(Arrays.asList(result));
         	adapter.notifyDataSetChanged();
         }
@@ -59,7 +59,6 @@ public class AutoFillCompany extends Activity{
 		@Override
 		protected String[] doInBackground(String... params) {
 			//return (new DataRetrieverService().getQuote(params[0]));
-			companies.clear();
 			return (new DataRetrieverService()).getCompanyNames(params[0]);
 		}
     }

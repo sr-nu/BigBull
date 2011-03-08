@@ -14,5 +14,8 @@ public class BuySellStockActivity extends Activity {
 		setContentView(R.layout.buy_sell);
 
 		TextView companyName = (TextView) findViewById(R.id.CompanyName);
+		companyName.setText("Company Name!!");
+		
+		
 	}
 }

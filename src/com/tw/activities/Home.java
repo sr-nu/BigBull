@@ -43,21 +43,6 @@ public class Home extends Activity {
 			}
 		});
 
-		/*//can use the above on key listener or this text changed listener
-		 * 
-		 * textBox.addTextChangedListener(new TextWatcher() {
-		 * @Override public void afterTextChanged(Editable s) {
-		 * if(s.toString().length()>2) { 
-		 * //TODO the service is getting called on everykey press how to optimise this new
-		 * UpdateQuoteTask().execute(s.toString()); } }
-		 * 
-		 * @Override public void beforeTextChanged(CharSequence s, int start,
-		 * int count, int after) { }
-		 * 
-		 * @Override public void onTextChanged(CharSequence s, int start, int
-		 * before, int count) { } });
-		 */
-
 		textBox.setOnItemClickListener(new OnItemClickListener() {
 			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
                 String companySelected = ((TextView)arg1).getText().toString();
